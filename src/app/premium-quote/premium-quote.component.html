@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>Quotation</h2>    
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <tbody>
+                <tr class="table-active"><td colspan="2" class="text-center">Basic Vehicle Details</td></tr>
+                <tr *ngFor="let data of bas">
+                    <td>{{data}}</td>
+                    <td>{{basData[data]}}</td>
+                </tr>
+
+                <tr class="table-active"><td colspan="2" class="text-center">OD Premium Details</td></tr>
+                <tr *ngFor="let data of od">
+                    <td>{{data}}</td>
+                    <td>{{odData[data]}}</td>
+                </tr>
+
+                <tr class="table-active"><td colspan="2" class="text-center">TP Premium Details</td></tr>
+                <tr *ngFor="let data of tp">
+                    <td>{{data}}</td>
+                    <td>{{tpData[data]}}</td>
+                </tr>
+
+                <tr class="table-active"><td colspan="2" class="text-center">Final Premium Details</td></tr>
+                <tr *ngFor="let data of fin">
+                    <td>{{data}}</td>
+                    <td>{{finalData[data]}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-outline-primary mb-5">Generate PDF</button>
+        <button class="btn btn-outline-primary ml-5 mb-5" (click)=commission()>Know your commission</button>
+    </div>
+</div>

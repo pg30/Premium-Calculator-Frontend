@@ -1,0 +1,189 @@
+<h1>{{vehicle.name}}</h1>
+<div class="container">
+    <form>
+
+        <!-- everything for bus is also for school bus -->
+
+        <div class="form-group mt-3 row" *ngIf="vehicle.id==3 || vehicle.id==7">
+            <!-- for gcv,3gcv -->
+            <label class="col-3" for="carrier">Carrier</label>
+            <select class="col-3 ml-5 form-control" [(ngModel)]="carrier" id="carrier" name="carrier">
+                <option *ngFor="let x of carrierVal">{{x}}</option>
+            </select>
+        </div>
+
+        <div class="form-group mt-3 row">
+            <!-- for two wheeler,private car,gcv,taxi,bus,3gcv,3pcv,misc -->
+            <label class="col-3" for="idv">IDV (Insured's declared value)</label>
+            <input class="col-3 ml-5 form-control" type="text" id="idv" [(ngModel)]="idv" name="idv">
+        </div>
+
+        <div class="form-group mt-3 row">
+            <!-- for two wheeler,private car, gcv,taxi,bus,3gcv,3pcv,misc -->
+            <label class="col-3" for="date_of_reg">Date of Registration</label>
+            <input class="col-3 ml-5 form-control" type="date" id="date_of_reg" [(ngModel)]="dateOfRegistration" name="date_of_reg">
+        </div>
+
+        <div class="form-group mt-3 row">
+            <!-- for two wheeler,private car,gcv,taxi,bus,3gcv,3pcv,misc -->
+            <label class="col-3" for="zone">Zone</label>
+            <select class="col-3 ml-5 form-control" [(ngModel)]="zone" id="zone" name="zone">
+                <option *ngFor="let x of zoneVal">{{x}}</option>
+            </select>
+        </div>
+
+        <div class="form-group mt-3 row" *ngIf="vehicle.id==9">
+            <!-- for misc -->
+            <label class="col-3" for="vehicle_type">Choose Vehicle</label>
+            <select class="col-3 ml-5 form-control" [(ngModel)]="vehicleType" id="vehicle_type" name="vehicle_type">
+                <option *ngFor="let x of vehicleTypeVal">{{x}}</option>
+            </select>
+        </div>
+
+        <div class="form-group mt-3 row" *ngIf="vehicle.id==9">
+            <!-- for misc -->
+            <label class="col-3" for="use_type">Choose vehicle use</label>
+            <select class="col-3 ml-5 form-control" [(ngModel)]="vehicleUse" id="use_type" name="use_type">
+                <option *ngFor="let x of vehicleUseVal">{{x}}</option>
+            </select>
+        </div>
+
+        <div class="form-group mt-3 row" *ngIf="vehicle.id==5 || vehicle.id==6 || vehicle.id==8 || vehicle.id==4">
+            <!-- for bus,3pcv,taxi -->
+            <label class="col-3" for="passenger">No of Passenger</label>
+            <input class="col-3 ml-5 form-control" type="text" id="passenger" [(ngModel)]="seatingCapacity" name="passenger">
+        </div>
+
+        <div class="form-group mt-3 row" *ngIf="vehicle.id==1 || vehicle.id==2 || vehicle.id==4">
+            <!-- for two wheeler,private car,taxi -->
+            <label class="col-3" for="cubic_capacity">Cubic Capacity</label>
+            <input class="col-3 ml-5 form-control" type="text" id="cubic_capacity" [(ngModel)]="cubicCapacity" name="cubic_capacity">
+        </div>
+
+        <div class="form-group mt-3 row" *ngIf="vehicle.id==3">
+            <!-- for gcv -->
+            <label class="col-3" for="gvw">Gross Vehicle Weight(Kg)</label>
+            <input class="col-3 ml-5 form-control" type="text" id="gvw" [(ngModel)]="gvw" name="gvw">
+        </div>
+
+        <div class="form-group mt-3 row">
+            <!-- for two wheeler,private car,gcv,taxi,bus,3gcv,3pcv,misc -->
+            <label class="col-3" for="od_disc">OD Discount(%)</label>
+            <input class="col-3 ml-5 form-control" type="text" id="od_disc" [(ngModel)]="odDisc" name="od_disc">
+        </div>
+
+        <div class="form-group mt-3 row">
+            <!-- for two wheeler,private car,gcv,taxi,bus,3gcv,3pcv,misc -->
+            <label class="col-3" for="elec">Electrical Accessories Value</label>
+            <input class="col-3 ml-5 form-control" type="text" id="elec" [(ngModel)]="elec" name="elec">
+        </div>
+
+        <div class="form-group mt-3 row">
+            <!-- for two wheeler,private car,gcv,taxi,bus,3gcv,3pcv,misc -->
+            <label class="col-3" for="non_elec">Non-Electrical Accessories value</label>
+            <input class="col-3 ml-5 form-control" type="text" id="non_elec" [(ngModel)]="nonelec" name="non_elec">
+        </div>
+
+        <div class="form-group mt-3 row">
+            <!-- for two wheeler,private car,gcv,taxi,bus,3gcv,3pcv,misc -->
+            <label class="col-3" for="ncb">NCB (No claim bonus)%</label>
+            <select class="col-3 ml-5 form-control" [(ngModel)]="ncb" id="ncb" name="ncb">
+                <option *ngFor="let x of ncbVal">{{x}}</option>
+            </select>
+        </div>
+
+        <div class="form-group mt-3 row">
+            <!-- for two wheeler,private car,gcv,taxi,bus,3gcv,3pcv,misc -->
+            <label class="col-3" for="zero_dep">Zero Depreciation rate</label>
+            <input class="col-3 ml-5 form-control" type="text" id="zero_dep" [(ngModel)]="zeroDepRate" name="zero_dep">
+        </div>
+
+        <div class="form-group mt-3 row"
+            *ngIf="vehicle.id==2 || vehicle.id==3 || vehicle.id==5 || vehicle.id==6 || vehicle.id==9">
+            <!-- for private car,gcv,bus,misc -->
+            <label class="col-3" for="geo_ext">Geographical Extension</label>
+            <div class="form-check-inline">
+                <input type="checkbox" class="form-check-input col-3 ml-5" id="geo_ext" [(ngModel)]="wantGeoExt" name="geo_ext">
+                <label class="form-check-label col-3" for="geo_ext">Yes</label>
+            </div>
+        </div>
+
+        <div class="form-group mt-3 row"
+            *ngIf="vehicle.id==2 || vehicle.id==3 || vehicle.id==5 || vehicle.id==6 || vehicle.id==9 || vehicle.id==4 || vehicle.id==7 || vehicle.id==8">
+            <!-- for private car,gcv,taxi,bus,3gcv,3pcv,misc -->
+            <label class="col-3" for="cng">CNG/LPG</label>
+            <div class="form-check-inline">
+                <input type="checkbox" class="form-check-input col-3 ml-5" id="cng" [(ngModel)]="cng.isCng" name="cng">
+                <label class="form-check-label col-3" for="cng">Yes</label>
+            </div>
+        </div>
+
+        <div class="form-group mt-3 row"
+            *ngIf="vehicle.id==2 || vehicle.id==3 || vehicle.id==5 || vehicle.id==6 || vehicle.id==9 || vehicle.id==4 || vehicle.id==7 || vehicle.id==8">
+            <!-- for private car,gcv,taxi,bus,3gcv,3pcv,misc -->
+            <label class="col-3" for="ext_cng">External CNG/LPG kit value</label>
+            <input class="col-3 ml-5 form-control" ng-disabled="!cng.isCng" type="text" id="ext_cng" [(ngModel)]="cng.extCngKit" name="ext_cng">
+        </div>
+
+        <div class="form-group mt-3 row" *ngIf="vehicle.id==9">
+            <!-- for misc -->
+            <label class="col-3" for="overturning">Cover Overturning</label>
+            <div class="form-check-inline">
+                <input type="checkbox" class="form-check-input col-3 ml-5" id="overturning" [(ngModel)]="wantOverturning" name="overturning">
+                <label class="form-check-label col-3" for="overturning">Yes</label>
+            </div>
+        </div>
+
+        <div class="form-group mt-3 row">
+            <!-- for two wheeler,private car,gcv,taxi,bus,3gcv,3pcv,misc -->
+            <label class="col-3" for="owner_pa">PA to owner driver</label>
+            <input class="col-3 ml-5 form-control" type="text" id="owner_pa" [(ngModel)]="paToDriver" name="owner_pa">
+        </div>
+
+        <div class="form-group mt-3 row">
+            <!-- for two wheeler,private car,gcv,taxi,bus,3gcv,3pcv,misc -->
+            <label class="col-3" for="ll_paid">LL to paid driver</label>
+            <input class="col-3 ml-5 form-control" type="text" id="ll_paid" [(ngModel)]="llToDriver" name="ll_paid">
+        </div>
+
+        <div class="form-group mt-3 row" *ngIf="vehicle.id==2 || vehicle.id==1">
+            <!-- for two wheeler,private car -->
+            <label class="col-3" for="pa_unnamed">PA to unnamed passenger</label>
+            <input class="col-3 ml-5 form-control" type="text" id="pa_unnamed" [(ngModel)]="paToUnnamedPassenger" name="pa_unnamed">
+        </div>
+
+        <div class="form-group mt-3 row" *ngIf="vehicle.id==3">
+            <!-- for gcv -->
+            <label class="col-3" for="nfpp">No. of Non-Faring passenger's(NFPP)</label>
+            <input class="col-3 ml-5 form-control" type="text" id="nfpp" [(ngModel)]="nfpp" name="nfpp">
+        </div>
+
+        <div class="form-group mt-3 row">
+            <!-- for two wheeler,private car,gcv,taxi,bus,3gcv,3pcv,misc -->
+            <label class="col-3" for="tppd">Restrict TPPD</label>
+            <div class="form-check-inline">
+                <input class="form-check-input ml-5 col-1" type="radio" name="tppd" id="tppd" [value]="true" [(ngModel)]="lessTppd">
+                <label class="form-check-label col-1" for="tppd"> Yes </label>
+                <input class="form-check-input ml-5 col-1" type="radio" name="tppd" id="tppd" [value]="false" [(ngModel)]="lessTppd" checked>
+                <label class="form-check-label col-1" for="tppd"> No </label>
+            </div>
+        </div>
+
+        <div class="form-group mt-3 row"
+            *ngIf="vehicle.id==3 || vehicle.id==5 || vehicle.id==6 || vehicle.id==9 || vehicle.id==4 || vehicle.id==7 || vehicle.id==8">
+                <!-- for gcv,taxi,bus,3gcv,3pcv,misc -->
+            <label class="col-3" for="imt">IMT-23</label>
+            <div class="form-check-inline">
+                <input class="form-check-input ml-5 col-1" type="radio" name="imt" id="imt" [value]="true" [(ngModel)]="wantImt23">
+                <label class="form-check-label col-1" for="imt"> Yes </label>
+                <input class="form-check-input ml-5 col-1" type="radio" name="imt" id="imt" [value]="false" [(ngModel)]="wantImt23" checked>
+                <label class="form-check-label col-1" for="imt"> No </label>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-primary mb-5" (click)=calculate()>Calculate</button>
+        </div>
+
+    </form>
+</div>

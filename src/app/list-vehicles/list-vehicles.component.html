@@ -1,0 +1,20 @@
+<h2>Vehicles Category</h2>
+<div class="container" *ngIf = "errorMessage">{{errorMessage}}</div>
+<table class="table">
+    <thead>
+
+    </thead>
+    <tbody>
+        <tr *ngFor = "let vehicle of vehicles">
+            <td>
+                <div>
+                    {{vehicle.name}}
+                    <img src="{{vehicle.url}}" alt="">
+                </div>
+            </td>
+            <td>
+                <button class="btn btn-outline-success btn-sm" (click)=calculatePremium(vehicle)>Calculate Premium</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
