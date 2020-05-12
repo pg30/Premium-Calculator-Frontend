@@ -99,7 +99,7 @@
         </div>
 
         <div class="form-group mt-3 row"
-            *ngIf="vehicle.id==2 || vehicle.id==3 || vehicle.id==5 || vehicle.id==6 || vehicle.id==9">
+            *ngIf="vehicle.id==3 || vehicle.id==5 || vehicle.id==6 || vehicle.id==9">
             <!-- for private car,gcv,bus,misc -->
             <label class="col-3" for="geo_ext">Geographical Extension</label>
             <div class="form-check-inline">
@@ -108,21 +108,25 @@
             </div>
         </div>
 
-        <div class="form-group mt-3 row"
-            *ngIf="vehicle.id==2 || vehicle.id==3 || vehicle.id==5 || vehicle.id==6 || vehicle.id==9 || vehicle.id==4 || vehicle.id==7 || vehicle.id==8">
-            <!-- for private car,gcv,taxi,bus,3gcv,3pcv,misc -->
-            <label class="col-3" for="cng">CNG/LPG</label>
-            <div class="form-check-inline">
-                <input type="checkbox" class="form-check-input col-3 ml-5" id="cng" [(ngModel)]="cng.isCng" name="cng">
-                <label class="form-check-label col-3" for="cng">Yes</label>
+        <div class="form-group">
+            <div class="form-group mt-3 row">
+                <!-- for private car,gcv,taxi,bus,3gcv,3pcv,misc -->
+                <label class="col-3" for="cng">CNG/LPG</label>
+                <div class="form-check-inline">
+                    <input class="form-check-input ml-5 col-1" type="radio" name="cng" id="cng" [value]="true" [(ngModel)]="isCng">
+                    <label class="form-check-label col-1" for="cng"> Yes </label>
+                    <input class="form-check-input ml-5 col-1" type="radio" name="cng" id="cng" [value]="false" [(ngModel)]="isCng" checked>
+                    <label class="form-check-label col-1" for="cng"> No </label>
+                </div>
             </div>
-        </div>
+            {{isCng}}
 
-        <div class="form-group mt-3 row"
-            *ngIf="vehicle.id==2 || vehicle.id==3 || vehicle.id==5 || vehicle.id==6 || vehicle.id==9 || vehicle.id==4 || vehicle.id==7 || vehicle.id==8">
-            <!-- for private car,gcv,taxi,bus,3gcv,3pcv,misc -->
-            <label class="col-3" for="ext_cng">External CNG/LPG kit value</label>
-            <input class="col-3 ml-5 form-control" ng-disabled="!cng.isCng" type="text" id="ext_cng" [(ngModel)]="cng.extCngKit" name="ext_cng">
+            <div class="form-group mt-3 row"
+                *ngIf="vehicle.id==2 || vehicle.id==3 || vehicle.id==5 || vehicle.id==6 || vehicle.id==9 || vehicle.id==4 || vehicle.id==7 || vehicle.id==8">
+                <!-- for private car,gcv,taxi,bus,3gcv,3pcv,misc -->
+                <label class="col-3" for="ext_cng">External CNG/LPG kit value</label>
+                <input class="col-3 ml-5 form-control" type="text" id="ext_cng" [(ngModel)]="extCngKit" name="ext_cng">
+            </div>
         </div>
 
         <div class="form-group mt-3 row" *ngIf="vehicle.id==9">

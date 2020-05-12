@@ -39,10 +39,8 @@ export class PremiumFormComponent implements OnInit {
     cubicCapacity: number = 0;
     gvw: number = 0
     seatingCapacity: number = 0;
-    cng = {
-        isCng: false,
-        extCngKit: 0
-    };
+    isCng: boolean =  false;
+    extCngKit: number = 0;
     dateOfRegistration: string = null;
     zone: string = this.zoneVal[0];
     carrier: string = this.carrierVal[0];
@@ -67,7 +65,7 @@ export class PremiumFormComponent implements OnInit {
     ngOnInit() {
         this.vehicle = new Vehicle(this.route.snapshot.params['id'], this.route.snapshot.params['name'], null);
 
-        if (this.vehicle.id != 1 && this.vehicle.id != 2)
+        if (this.vehicle.id != 1 && this.vehicle.id != 2 && this.vehicle.id != 4)
             this.zoneVal.push("C");
         if (this.month.length < 2)
             this.month = '0' + this.month;
@@ -78,13 +76,13 @@ export class PremiumFormComponent implements OnInit {
     //this.datePipe.transform(dateOfRegistration,'dd-MM-yyyy' send date in this format
 
     calculate() {
-        let basicVehicleDetailsPOJO = new BasicVehicleDetailsPOJO(this.vehicle, this.idv, this.cubicCapacity, this.cng.extCngKit, this.gvw,
-            this.seatingCapacity, this.cng.isCng, this.datePipe.transform(this.dateOfRegistration, 'dd-MM-yyyy'), this.zone, this.carrier,
+        let basicVehicleDetailsPOJO = new BasicVehicleDetailsPOJO(this.vehicle, this.idv, this.cubicCapacity, this.extCngKit, this.gvw,
+            this.seatingCapacity, this.isCng, this.datePipe.transform(this.dateOfRegistration, 'dd-MM-yyyy'), this.zone, this.carrier,
             this.vehicleUse, this.vehicleType);
 
         let tpPremiumPOJO = new TpPremiumPOJO(this.paToDriver, this.llToDriver, this.paToUnnamedPassenger, this.nfpp, this.lessTppd);
 
-        let odPremiumPOJO = new OdPremiumPOJO(this.zeroDepRate, this.elec, this.nonelec, this.ncb, this.odDisc, this.wantImt23, this.wantGeoExt, this.wantImt23);
+        let odPremiumPOJO = new OdPremiumPOJO(this.zeroDepRate, this.elec, this.nonelec, this.ncb, this.odDisc, this.wantImt23, this.wantGeoExt, this.wantOverturning);
 
         let pcRequest = new PremiumCalculationRequest(basicVehicleDetailsPOJO, tpPremiumPOJO, odPremiumPOJO);
 
@@ -96,6 +94,7 @@ export class PremiumFormComponent implements OnInit {
 
     handleSuccess(response) {
         this.data.setItem("pcResponse",JSON.stringify(response));
+        console.log("after getting response");
         console.log(response);
         this.router.navigate(['/quote']);
     }

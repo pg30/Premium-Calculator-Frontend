@@ -12,6 +12,8 @@ export class PremiumDataService {
 
     getQuote(pcRequest : PremiumCalculationRequest,username : string)
     {
+        console.log("before hitting calculate api");
+        console.log(pcRequest);
         return this.http.post<PremiumCalculationResponse>(`http://localhost:8080/users/${username}/premium`,pcRequest);
     }
 }
