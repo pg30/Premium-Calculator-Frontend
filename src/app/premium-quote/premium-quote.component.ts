@@ -3,7 +3,8 @@ import { DataStorageService } from '../service/data-storage.service';
 import { PremiumDataService } from '../service/premium-data.service';
 import { PremiumCalculationResponse } from '../class/premium-calculation-response';
 import { Router } from '@angular/router';
-
+import { PdfDataService } from '../service/data/pdf-data.service';
+import {saveAs} from 'file-saver/dist/FileSaver';
 @Component({
     selector: 'app-premium-quote',
     templateUrl: './premium-quote.component.html',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 export class PremiumQuoteComponent implements OnInit {
 
     constructor(private data:DataStorageService,
-        private route:Router) { }
+        private route:Router,private pdf : PdfDataService) { }
 
     public basData:Map<String,String>;
     public tpData:Map<string,string>;
@@ -40,5 +41,26 @@ export class PremiumQuoteComponent implements OnInit {
     commission()
     {
         this.route.navigate(['commission']);
+    }
+
+    getPdf()
+    {
+        let company = "Future Generali Insurance Company Ltd.";
+        this.pdf.getQuote(this.pcResponse,company,'pranay').subscribe(
+            pdf => this.handleSuccess(pdf,company),
+            error => this.handleError(error)
+        );
+    }
+
+    handleSuccess(pdf,company)
+    {
+        const blob = new Blob([pdf],{type : 'application/pdf'});
+        const filename =  company+"_quotation.pdf";
+        saveAs(blob,filename);
+    }
+
+    handleError(error)
+    {
+        console.log(error);
     }
 }
