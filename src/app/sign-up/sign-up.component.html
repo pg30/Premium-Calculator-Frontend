@@ -1,0 +1,28 @@
+<div class="container">
+    <h3 class="text-center">Signup</h3>
+    <div *ngIf='invalid' class="alert alert-warning">{{errorMessage}}</div>
+    <form #signUpForm="ngForm">
+        <div class="form-group" [class.has-error]="nameControl.invalid && nameControl.touched" [class.has-success]="nameControl.valid">
+            <input class="form-control" type="text" name="name" [(ngModel)]="name" id="name" #nameControl="ngModel" placeholder="Name" required autofocus/>
+            <small class="form-text text-muted" *ngIf="nameControl.invalid && nameControl.touched">Name is required</small>
+        </div>
+        <div class="form-group" [class.has-error]="emailControl.invalid && emailControl.touched" [class.has-success]="emailControl.valid">
+            <input class="form-control" type="email" name="email" [(ngModel)]="email" id="email" #emailControl="ngModel" placeholder="Email Address" required email>
+            <small class="form-text text-muted" *ngIf="emailControl.invalid && emailControl.touched">Email is required</small>
+        </div>
+        <div class="form-group" [class.has-error]="mobileControl.invalid && mobileControl.touched" [class.has-success]="mobileControl.valid">
+            <input class="form-control" type="text" name="mobile" [(ngModel)]="mobile" id="mobile" #mobileControl="ngModel" placeholder="Mobile no" required minlength="10" maxlength="10">
+            <small class="form-text text-muted">Without +91-</small>
+            <small class="form-text text-muted" *ngIf="mobileControl.invalid && mobileControl.touched">Mobile No is required</small>
+        </div>
+        <div class="form-group" [class.has-error]="passwordControl.invalid && passwordControl.touched" [class.has-success]="passwordControl.valid">
+            <input class="form-control" type="password" name="password" [(ngModel)]="password" id="password" #passwordControl="ngModel" placeholder="Password" required>
+            <small class="form-text text-muted" *ngIf="passwordControl.invalid && passwordControl.touched">Password is required</small>
+        </div>
+        <div class="form-group" [class.has-error]="cnfpasswordControl.invalid && cnfpasswordControl.touched" [class.has-success]="cnfpasswordControl.valid">
+            <input class="form-control" type="password" name="cnfpassword" [(ngModel)]="cnfpassword" id="cnfpassword" #cnfpasswordControl="ngModel" placeholder="Confirm Password" required>
+            <small class="form-text text-muted" *ngIf="invalidPassword || (cnfpasswordControl.invalid && cnfpasswordControl.touched)">Confirm Password should be equal to password</small>
+        </div>
+        <button type="submit" (click)=handleSignup() [disabled]="signUpForm.invalid" class="btn btn-success btn-lg">Sign Up</button>
+    </form>
+</div>

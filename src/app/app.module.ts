@@ -11,10 +11,12 @@ import { ListVehiclesComponent } from './list-vehicles/list-vehicles.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PremiumFormComponent } from './premium-form/premium-form.component';
 import { PremiumQuoteComponent } from './premium-quote/premium-quote.component';
 import { CommissionComponent } from './commission/commission.component';
+import { AuthInterceptorService } from './service/auth/auth-interceptor.service';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +30,8 @@ import { CommissionComponent } from './commission/commission.component';
         LogoutComponent,
         PremiumFormComponent,
         PremiumQuoteComponent,
-        CommissionComponent
+        CommissionComponent,
+        SignUpComponent
     ],
     imports: [
         BrowserModule,
@@ -36,7 +39,11 @@ import { CommissionComponent } from './commission/commission.component';
         FormsModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [{
+        provide : HTTP_INTERCEPTORS,
+        useClass : AuthInterceptorService,
+        multi : true
+    }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

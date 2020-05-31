@@ -9,10 +9,12 @@ import { RouteGuardService } from './service/route-guard.service';
 import { PremiumFormComponent } from './premium-form/premium-form.component';
 import { PremiumQuoteComponent } from './premium-quote/premium-quote.component';
 import { CommissionComponent } from './commission/commission.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
     { path: '', component: LoginComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'signup', component: SignUpComponent },
     { path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService] },
     { path: 'home/:name', component: HomeComponent, canActivate: [RouteGuardService] },
     { path: 'vehicles', component: ListVehiclesComponent, canActivate: [RouteGuardService] },

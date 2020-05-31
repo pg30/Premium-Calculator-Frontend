@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStorageService } from '../service/data-storage.service';
-import { PremiumDataService } from '../service/premium-data.service';
 import { PremiumCalculationResponse } from '../class/premium-calculation-response';
 import { Router } from '@angular/router';
 import { PdfDataService } from '../service/data/pdf-data.service';
 import {saveAs} from 'file-saver/dist/FileSaver';
+import { DataStorageService } from '../service/data/data-storage.service';
 @Component({
     selector: 'app-premium-quote',
     templateUrl: './premium-quote.component.html',

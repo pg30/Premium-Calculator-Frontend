@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PremiumCalculationRequest } from '../class/premium-calculation-request';
-import { PremiumCalculationResponse } from '../class/premium-calculation-response';
+import { PremiumCalculationRequest } from 'src/app/class/premium-calculation-request';
+import { PremiumCalculationResponse } from 'src/app/class/premium-calculation-response';
 
 @Injectable({
   providedIn: 'root'

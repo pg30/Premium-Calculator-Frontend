@@ -6,8 +6,8 @@ import { BasicVehicleDetailsPOJO } from '../class/basic-vehicle-details-pojo';
 import { TpPremiumPOJO } from '../class/tp-premium-pojo';
 import { OdPremiumPOJO } from '../class/od-premium-pojo';
 import { PremiumCalculationRequest } from '../class/premium-calculation-request';
-import { PremiumDataService } from '../service/premium-data.service';
-import { DataStorageService } from '../service/data-storage.service';
+import { PremiumDataService } from '../service/data/premium-data.service';
+import { DataStorageService } from '../service/data/data-storage.service';
 
 @Component({
     selector: 'app-premium-form',

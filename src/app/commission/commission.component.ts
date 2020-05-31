@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStorageService } from '../service/data-storage.service';
+import { DataStorageService } from '../service/data/data-storage.service';
 import { PremiumCalculationResponse } from '../class/premium-calculation-response';
 
 @Component({
